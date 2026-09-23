@@ -15,13 +15,6 @@ Config.KeyBind = "G"
 --[[ Cooldown in milliseconds between mode changes ]]
 Config.Cooldown = 2000
 
---[[ 
-    Engine Health Failsafe:
-    If vehicle engine health drops below this threshold, pursuit mode automatically resets to Stock.
-    1000.0 = Full health | 250.0 = Damaged engine / smoking | 0.0 = Disabled
-]]
-Config.MinEngineHealth = 250.0
-
 --[[ Authorized jobs and minimum grades required to use pursuit modes ]]
 Config.Job = {
     ["police"] = 1,
@@ -37,54 +30,43 @@ Config.AllowedVehicleNames = {
     "AMBULANCE",
 }
 
---[[ 
-    Pursuit Modes Configuration:
-    Simple tuning parameters:
-    - Name: Display name of the mode
-    - Color: RGB color for Xenon headlights and hood purge steam spray { Red, Green, Blue }
-    - TopSpeed: Extra top speed in km/h added to vehicle
-    - Acceleration: Acceleration power boost in %
-    - Braking: Braking power boost in %
-    - Handling: Traction and cornering grip boost in %
-    (Advanced raw CHandlingData floats are also supported)
-]]
 Config.Mods = {
     {
-        Name = "Sport",
+        Name = 'Sport',
         Color = { 255, 255, 255 }, -- White
-        TopSpeed = 30,             -- (+30 km/h)
-        Acceleration = 15,          -- (+15%)
-        Braking = 15,              -- (+15%)
-        Handling = 5,              -- (+5%)
+        TopSpeed = 30,             -- Extra top speed (+30 km/h)
+        Acceleration = 15,         -- Acceleration & engine power boost (+15%)
+        Braking = 15,              -- Braking force boost (+15%)
+        Handling = 5,              -- Traction & cornering grip boost (+5%)
     },
     {
-        Name = "Sport+",
+        Name = 'Sport+',
         Color = { 255, 255, 0 },   -- Yellow
-        TopSpeed = 45,             -- (+45 km/h)
+        TopSpeed = 45,
         Acceleration = 25,
         Braking = 25,
         Handling = 8,
     },
     {
-        Name = "Touring",
+        Name = 'Touring',
         Color = { 0, 255, 0 },     -- Green
-        TopSpeed = 60,             -- (+60 km/h)
+        TopSpeed = 60,
         Acceleration = 35,
         Braking = 35,
         Handling = 12,
     },
     {
-        Name = "Touring+",
+        Name = 'Touring+',
         Color = { 0, 100, 255 },   -- Blue
-        TopSpeed = 75,             -- (+75 km/h)
+        TopSpeed = 75,
         Acceleration = 45,
         Braking = 45,
         Handling = 16,
     },
     {
-        Name = "BeastMode",
+        Name = 'BeastMode',
         Color = { 255, 0, 0 },     -- Red
-        TopSpeed = 90,             -- (+90 km/h)
+        TopSpeed = 90,
         Acceleration = 60,
         Braking = 55,
         Handling = 20,

@@ -200,7 +200,7 @@ CreateThread(function()
                 local netId = VehToNet(veh)
                 if netId and (PursuitMods[netId] or 0) > 0 then
                     sleep = 400
-                    if GetVehicleEngineHealth(veh) < (Config.MinEngineHealth or 250.0) then
+                    if Config.MinEngineHealth and GetVehicleEngineHealth(veh) < Config.MinEngineHealth then
                         TriggerServerEvent('ResGuard_PursuitMode:server:requestMode', 0, netId)
                     end
                 end
