@@ -96,13 +96,6 @@ RegisterNetEvent('ResGuard_PursuitMode:server:requestMode', function(targetIndex
     TriggerClientEvent('ResGuard_PursuitMode:client:applyMode', src, vehNetId, targetIndex)
 end)
 
-RegisterCommand("resetpursuit", function(source)
-    if source == 0 or IsPlayerAceAllowed(source, "command.resetpursuit") then
-        ActivePursuits = {}
-        TriggerClientEvent('chat:addMessage', source, { args = { '^2[ResGuard_PursuitMode]', 'Pursuit states cleared.' } })
-    end
-end, false)
-
 exports('GetVehiclePursuitState', function(netId)
     return VehicleStates[netId] or 0
 end)
