@@ -254,7 +254,6 @@ local function cycleMode()
 
     local now = GetGameTimer()
     if now - lastChange < (Config.Cooldown or 2000) then
-        notify(_t('cooldown'))
         return
     end
 
@@ -269,13 +268,6 @@ end
 local commandName = Config.Command or "pursuitmode"
 RegisterCommand(commandName, cycleMode)
 RegisterKeyMapping(commandName, "Switch Pursuit Mode", "KEYBOARD", Config.KeyBind or "G")
-
-if commandName ~= "pursuit" then
-    RegisterCommand("pursuit", cycleMode)
-end
-if commandName ~= "pursuitmod" then
-    RegisterCommand("pursuitmod", cycleMode)
-end
 
 exports('GetPursuitMode', function(veh)
     if not veh or veh == 0 then return 0 end

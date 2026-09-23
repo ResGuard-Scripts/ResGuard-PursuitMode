@@ -1,12 +1,3 @@
---[[
-    ========================================================
-    ResGuard Development | ResGuard_PursuitMode
-    Vehicle Performance & Visual Purge System
-    Discord: https://discord.gg/JFsWSJbND
-    ========================================================
-]]
-
---[[ Configuration Settings ]]
 Config = {}
 
 --[[ Locale setting for language localization ('en', 'hr', 'de') ]]
@@ -15,20 +6,13 @@ Config.Locale = "en"
 --[[ Toggle in-game notifications when changing pursuit modes ]]
 Config.EnableNotify = true
 
---[[ 
-    Framework Detection:
-    The script automatically detects ESX, QBCore, and Qbox without any manual setup.
-    If you wish to force a specific framework manually, you can uncomment the line below:
-    Config.Framework = "auto" -- Options: "auto", "esx", "qb", "qbx"
-]]
-
---[[ Chat command to switch pursuit modes (aliases: /pursuit, /pursuitmod) ]]
+--[[ Chat command to switch pursuit modes ]]
 Config.Command = "pursuitmode"
 
---[[ Default keyboard key to switch pursuit modes (Can be customized by each player in GTA Settings -> Key Mappings -> FiveM) ]]
+--[[ Default keyboard key to switch pursuit modes ]]
 Config.KeyBind = "G"
 
---[[ Cooldown in milliseconds between mode changes (prevents spam and lets purge effects finish) ]]
+--[[ Cooldown in milliseconds between mode changes ]]
 Config.Cooldown = 2000
 
 --[[ 
