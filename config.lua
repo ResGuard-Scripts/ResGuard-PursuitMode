@@ -1,73 +1,106 @@
+--[[
+    ========================================================
+    ResGuard Development | ResGuard_PursuitMode
+    Vehicle Performance & Visual Purge System
+    Discord: https://discord.gg/JFsWSJbND
+    ========================================================
+]]
+
+--[[ Configuration Settings ]]
 Config = {}
 
--- Framework: 'auto', 'esx', 'qb', 'qbx'
-Config.Framework = 'auto'
+--[[ Locale setting for language localization ('en', 'hr', 'de') ]]
+Config.Locale = "en"
 
--- Default locale: 'en', 'hr', 'de'
-Config.Locale = 'en'
-
--- Toggle system notifications
+--[[ Toggle in-game notifications when changing pursuit modes ]]
 Config.EnableNotify = true
 
--- Keybind to cycle modes (default: G, can be rebound in GTA Settings -> Key Mappings -> FiveM)
-Config.KeyBind = 'G'
-Config.Cooldown = 2000 -- Cooldown between switching modes (ms)
+--[[ 
+    Framework Detection:
+    The script automatically detects ESX, QBCore, and Qbox without any manual setup.
+    If you wish to force a specific framework manually, you can uncomment the line below:
+    Config.Framework = "auto" -- Options: "auto", "esx", "qb", "qbx"
+]]
 
--- Auto-reset: restores stock vehicle handling if engine health drops below threshold
+--[[ Chat command to switch pursuit modes (aliases: /pursuit, /pursuitmod) ]]
+Config.Command = "pursuitmode"
+
+--[[ Default keyboard key to switch pursuit modes (Can be customized by each player in GTA Settings -> Key Mappings -> FiveM) ]]
+Config.KeyBind = "G"
+
+--[[ Cooldown in milliseconds between mode changes (prevents spam and lets purge effects finish) ]]
+Config.Cooldown = 2000
+
+--[[ 
+    Engine Health Failsafe:
+    If vehicle engine health drops below this threshold, pursuit mode automatically resets to Stock.
+    1000.0 = Full health | 250.0 = Damaged engine / smoking | 0.0 = Disabled
+]]
 Config.MinEngineHealth = 250.0
 
--- Authorized jobs and minimum grade required to access pursuit modes
+--[[ Authorized jobs and minimum grades required to use pursuit modes ]]
 Config.Job = {
-    ['police'] = 1,
-    ['sheriff'] = 1,
-    ['ambulance'] = 3,
+    ["police"] = 1,
+    ["sheriff"] = 1,
+    ["ambulance"] = 3,
 }
 
--- Spawn names of vehicles equipped with pursuit system
+--[[ Spawn names of whitelisted vehicles equipped with the pursuit system ]]
 Config.AllowedVehicleNames = {
-    'POLICE2',
-    'polbuffalo6',
-    'POLICE3',
-    'AMBULANCE'
+    "POLICE2",
+    "polbuffalo6",
+    "POLICE3",
+    "AMBULANCE",
 }
 
+--[[ 
+    Pursuit Modes Configuration:
+    Simple tuning parameters:
+    - Name: Display name of the mode
+    - Color: RGB color for Xenon headlights and hood purge steam spray { Red, Green, Blue }
+    - TopSpeed: Extra top speed in km/h added to vehicle
+    - Acceleration: Acceleration power boost in %
+    - Braking: Braking power boost in %
+    - Handling: Traction and cornering grip boost in %
+    (Advanced raw CHandlingData floats are also supported)
+]]
 Config.Mods = {
     {
-        Name = 'Sport',
+        Name = "Sport",
         Color = { 255, 255, 255 }, -- White
         TopSpeed = 30,             -- (+30 km/h)
-        Acceleration = 15,          
-        Braking = 15,              
-        Handling = 5,          
+        Acceleration = 15,          -- (+15%)
+        Braking = 15,              -- (+15%)
+        Handling = 5,              -- (+5%)
     },
     {
-        Name = 'Sport+',
+        Name = "Sport+",
         Color = { 255, 255, 0 },   -- Yellow
-        TopSpeed = 45,
+        TopSpeed = 45,             -- (+45 km/h)
         Acceleration = 25,
         Braking = 25,
         Handling = 8,
     },
     {
-        Name = 'Touring',
+        Name = "Touring",
         Color = { 0, 255, 0 },     -- Green
-        TopSpeed = 60,
+        TopSpeed = 60,             -- (+60 km/h)
         Acceleration = 35,
         Braking = 35,
         Handling = 12,
     },
     {
-        Name = 'Touring+',
+        Name = "Touring+",
         Color = { 0, 100, 255 },   -- Blue
-        TopSpeed = 75,
+        TopSpeed = 75,             -- (+75 km/h)
         Acceleration = 45,
         Braking = 45,
         Handling = 16,
     },
     {
-        Name = 'BeastMode',
+        Name = "BeastMode",
         Color = { 255, 0, 0 },     -- Red
-        TopSpeed = 90,
+        TopSpeed = 90,             -- (+90 km/h)
         Acceleration = 60,
         Braking = 55,
         Handling = 20,

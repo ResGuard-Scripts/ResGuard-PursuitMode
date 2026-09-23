@@ -237,7 +237,7 @@ AddEventHandler('entityRemoved', function(entity)
     end
 end)
 
-RegisterCommand("pursuitmod", function()
+local function cycleMode()
     local ped = PlayerPedId()
     local veh = GetVehiclePedIsIn(ped, false)
     if veh == 0 or GetPedInVehicleSeat(veh, -1) ~= ped then return end
@@ -264,9 +264,18 @@ RegisterCommand("pursuitmod", function()
 
     local nextIndex = (PursuitMods[netId] or 0) + 1
     setPursuitMode(veh, nextIndex)
-end)
+end
 
-RegisterKeyMapping("pursuitmod", "Switch Pursuit Mode", "KEYBOARD", Config.KeyBind or "G")
+local commandName = Config.Command or "pursuitmode"
+RegisterCommand(commandName, cycleMode)
+RegisterKeyMapping(commandName, "Switch Pursuit Mode", "KEYBOARD", Config.KeyBind or "G")
+
+if commandName ~= "pursuit" then
+    RegisterCommand("pursuit", cycleMode)
+end
+if commandName ~= "pursuitmod" then
+    RegisterCommand("pursuitmod", cycleMode)
+end
 
 exports('GetPursuitMode', function(veh)
     if not veh or veh == 0 then return 0 end
@@ -275,5 +284,6 @@ exports('GetPursuitMode', function(veh)
 end)
 
 exports('CyclePursuitMode', function()
-    ExecuteCommand('pursuitmod')
+    cycleMode()
 end)
+
