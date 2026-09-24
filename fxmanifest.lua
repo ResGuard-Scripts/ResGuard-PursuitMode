@@ -4,7 +4,7 @@ lua54 'yes'
 
 author 'ResGuard | Bruneky'
 description 'ResGuard PursuitMode - Vehicle Performance & Visual Effects'
-version '1.1.0'
+version '1.1.1'
 
 shared_scripts {
     'config.lua',
